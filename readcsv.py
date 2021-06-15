@@ -21,7 +21,7 @@ def readcsv(file_name, column_name=None):
         return {"statusCode":500, "message":e}
 
 
-print(readcsv("file1.csv","Manager"))
-# print(readcsv("file1.csv","Name"))
+# print(readcsv("file1.csv","Manager"))
+print(readcsv("file1.csv","Name"))
 # print(readcsv("file1.csv",""))
 # print(readcsv("file1.csv"))
