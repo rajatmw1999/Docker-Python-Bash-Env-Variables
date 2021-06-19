@@ -1,11 +1,13 @@
 from pandas import read_csv
 import re
 import boto3
+import os
 
 regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'  
 
 def download(bucket_name, object_name):
     localfilename='file.csv'
+    print(os.environ.get('ACCESS_KEY_ID'))
 
     s3 = boto3.client('s3',aws_access_key_id='AKIAU6ZPXU5L566PDKY6',
         aws_secret_access_key= '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')
