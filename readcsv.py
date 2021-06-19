@@ -1,5 +1,16 @@
-# pandas is used as it makes parsing of csv very easier and customizable compared to csv module
 from pandas import read_csv
+import re
+import boto3
+
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'  
+
+def download(bucket_name, object_name):
+    localfilename='file.csv'
+
+    s3 = boto3.client('s3',aws_access_key_id='AKIAU6ZPXU5L566PDKY6',
+        aws_secret_access_key= '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')
+    s3.download_file(bucket_name, object_name, localfilename)
+    readcsv(localfilename,'Email')
 
 def readcsv(file_name, column_name=None):
     try:
@@ -15,13 +26,21 @@ def readcsv(file_name, column_name=None):
 
         # converting column data to list individually
         selectedcol = data[column_name].tolist()
-        return selectedcol
+        checkemail(selectedcol)
     except Exception as e:
         print(e)
         return {"statusCode":500, "message":e}
 
+def checkemail(selectedcol):
+    for x in selectedcol:
+        if re.search(regex,x):   
+            pass   
+        else:   
+            print("Invalid Email : " + str(x))
+
+download('testbucketcsvdownload','emails.csv')
 
 # print(readcsv("file1.csv","Manager"))
-print(readcsv("file1.csv","Name"))
+# print(readcsv("file1.csv","gender"))
 # print(readcsv("file1.csv",""))
 # print(readcsv("file1.csv"))
