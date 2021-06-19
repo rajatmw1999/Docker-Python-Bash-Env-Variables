@@ -19,6 +19,3 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run the Docker image
       run: docker run my-image-name
-- uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name
