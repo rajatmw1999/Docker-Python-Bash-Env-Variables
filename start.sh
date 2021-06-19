@@ -1,3 +1,3 @@
 echo "HELLO"
-python --version
+python3.8 --version
 py readcsv.py
