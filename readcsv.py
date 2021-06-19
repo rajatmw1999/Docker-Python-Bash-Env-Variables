@@ -7,10 +7,10 @@ regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
 def download(bucket_name, object_name):
     localfilename='file.csv'
-    print(os.environ.get('ACCESS_KEY_ID'))
+    # print(os.environ.get('ACCESS_KEY_ID'))
 
-    s3 = boto3.client('s3',aws_access_key_id='AKIAU6ZPXU5L566PDKY6',
-        aws_secret_access_key= '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')
+    s3 = boto3.client('s3',aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key= os.environ.get('AWS_SECRET_ACCESS_KEY'))
     s3.download_file(bucket_name, object_name, localfilename)
     readcsv(localfilename,'Email')
 

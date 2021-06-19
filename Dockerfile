@@ -4,7 +4,9 @@ MAINTAINER "Rajat Upadhyay" <rajatis1999@gmail.com>
 
 LABEL name="Docker build for acceptance testing using the robot framework"
 ARG DEBIAN_FRONTEND=noninteractive
-ENV ACCESS_KEY_ID=AKIAU6ZPXU5L566PDKY6
+
+ENV AWS_ACCESS_KEY_ID=AKIAU6ZPXU5L566PDKY6
+ENV AWS_SECRET_ACCESS_KEY=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
 
 RUN apt update \
 	&& apt install -y software-properties-common \
