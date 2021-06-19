@@ -13,12 +13,8 @@ RUN apt update \
 	&& add-apt-repository ppa:deadsnakes/ppa \
 	&& apt update \
 	&& apt install -y python3.8 \
-	python3-pip
+	python3-pip wget firefox
 
-
-# RUN python ––version
-# RUN echo apt install firefox
-# RUN echo firefox --version
 # RUN apt-get update \
 # 	&& apt-get install -y build-essential libssl-dev libffi-dev python-dev \
 # 		python3-pip python-dev gcc phantomjs firefox \
@@ -28,6 +24,7 @@ RUN apt update \
 COPY requirements.txt .
 COPY start.sh .
 COPY readcsv.py .
+COPY TC1.robot .
 # COPY newsh.sh .
 
 # RUN wget https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -35,14 +32,14 @@ COPY readcsv.py .
 RUN python3.8 -m pip install -r requirements.txt
 
 
-# RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz \
-# 	&& tar xvzf geckodriver-*.tar.gz \
-# 	&& rm geckodriver-*.tar.gz 
+RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz \
+	&& tar xvzf geckodriver-*.tar.gz \
+	&& rm geckodriver-*.tar.gz 
 # RUN export PATH=$PATH:/
 # COPY geckodriver .
 
-# RUN mv geckodriver /usr/local/bin \
-# 	&& chmod a+x /usr/local/bin/geckodriver
+RUN mv geckodriver /usr/local/bin \
+	&& chmod a+x /usr/local/bin/geckodriver
 
 # install chrome and chromedriver in one run command to clear build caches for new versions (both version need to match)
 # RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
