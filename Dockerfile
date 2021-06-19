@@ -7,8 +7,8 @@ LABEL name="Docker build for acceptance testing using the robot framework"
 ARG DEBIAN_FRONTEND=noninteractive
 
 # credentials for aws
-ENV AWS_ACCESS_KEY_ID=AKIAU6ZPXU5L566PDKY6
-ENV AWS_SECRET_ACCESS_KEY=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
+ENV AWS_ACCESS_KEY_ID=#
+ENV AWS_SECRET_ACCESS_KEY=#
 
 # installing python, pip, wget, firefox:89.0.1
 RUN apt update \
